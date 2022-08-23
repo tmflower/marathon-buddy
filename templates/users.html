@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>This H2 is from the users page.</h2>
+{% for user in users %}
+    <li>{{ user.username }}</li>
+        <p>Miles completed: {{ user.total_miles_completed }}</p>
+{% endfor %}
+{% endblock%}

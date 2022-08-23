@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Name: {{ user.username }}'s Marathon Training Plan</h2>
+<p>Details for week #{{ week.num }}</p>
+
+<ul>Mileage By Day:
+    {% for day in my_days %}
+        <li>Day {{ day.num }}:  Run {{ day.mileage_target }} miles</li>
+    {% endfor %}
+</ul>
+
+<p>Total miles to run this week: {{ week.mileage_target }}</p>
+<p>Miles completed this week: {{ week.miles_completed }}</p>
+<p>Miles remaining this week: {{ week.mileage_target - week.miles_completed }}</p>
+<a href="/my-training-plan">Back to Training Plan</a>
+
+{% endblock%}

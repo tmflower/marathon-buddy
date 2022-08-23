@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>This is the form to enter how many weeks you are training for.</h2>
+<form id="num-weeks-form" method="POST">
+    <p>How many weeks do you want to train for your marathon?</p>
+    <input type="number" name="num_weeks" placeholder="enter number of weeks">
+    <button type="submit">Submit</button>
+</form>
+{% endblock%}

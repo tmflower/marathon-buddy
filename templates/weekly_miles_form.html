@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>This is the form to enter WEEKLY mileage goals.</h2>
+<form id="weekly-miles-form" method="post">
+    <p>Your training plan is {{ num_weeks }} weeks long. Now let's set up your weekly mileage targets:</p>
+    <ul>    
+        {% for week in weeks %}
+            <li>Week {{ week }}: <input type="number" name="{{ week }}" placeholder="enter number of miles"></li>
+        {% endfor %}
+    </ul>
+    <button type="submit">Submit</button>
+</form>
+{% endblock%}

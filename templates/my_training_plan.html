@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Here is your plan!</h2>
+<p>Name: {{ user.username }}</p>
+<p>Total Miles Completed: {{ user.total_miles_completed }}</p>
+<p>Miles Remaining: {{ 26.2 - user.total_miles_completed }}</p>
+<p>Number of Weeks to Train: {{ user.num_weeks }}</p>
+<p>Current week: {{ week }}</p>
+
+<ul>Mileage By Week:
+    {% for week in my_weeks %}
+        <li><a href="/weekly-view/{{week.num}}">Week:{{ week.num }}</a></li>
+        <ul>
+            {% for day in my_days %}
+                {% if day.week == week.num %}
+                <li>Day: {{ day.num }} --- {{ day.mileage_target }} miles</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <p>Total miles: {{ week.mileage_target }}</p>
+    {% endfor %}
+</ul>
+
+<ul>Mileage By Day:
+    {% for day in my_days %}
+        <li>Day: {{ day.num }} --- {{ day.mileage_target }} miles</li>
+    {% endfor %}
+</ul>
+
+{% endblock%}
