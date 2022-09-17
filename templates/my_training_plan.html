@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Here is your plan!</h2>
-<p>Name: {{ user.username }}</p>
-<p>Total Miles Completed: {{ user.total_miles_completed }}</p>
-<p>Miles Remaining: {{ 26.2 - user.total_miles_completed }}</p>
-<p>Number of Weeks to Train: {{ user.num_weeks }}</p>
-<p>Current week: {{ week }}</p>
+<h2>{{ user.username }}'s Marathon Training Plan</h2>
+<!-- <p>Total Miles Completed: {{ user.total_miles_completed }}</p>
+<p>Miles Remaining in My Plan: </p> -->
+<p>Total Weeks to Train: {{ user.num_weeks }}</p>
+<h3>Select a week to add or edit daily mileage goals:</h3>
 
-<ul>Mileage By Week:
+<h4>Mileage By Week:</h4>
+    <ul>
     {% for week in my_weeks %}
-        <li><a href="/weekly-view/{{week.num}}">Week:{{ week.num }}</a></li>
-        <ul>
+        <p><a href="/weekly-view/{{week.num}}">Week:{{ week.num }}</a></p>
+        <div class="week" id="week-{{week.num}}">
             {% for day in my_days %}
                 {% if day.week == week.num %}
-                <li>Day: {{ day.num }} --- {{ day.mileage_target }} miles</li>
-                {% endif %}
+                <div class="day" id="{{ day.id }}"> Day: {{ day.num }} --- {{ day.mileage_target }} miles</div> 
+                {% endif %}                              
             {% endfor %}
-        </ul>
-        <p>Total miles: {{ week.mileage_target }}</p>
+        </div>
+        <p>Total miles this week: {{ week.mileage_target }}</p>
     {% endfor %}
-</ul>
+    </ul>
 
 <ul>Mileage By Day:
     {% for day in my_days %}

@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <h1>This H1 is from the base template. Anything here should appear on all pages!</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="alert alert-{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Marathon Buddy</h1>
+    <form><a href="/logout">Logout</a></form>
  {% block content %}  
  {% endblock %}
+ <script src="/static/app.js"></script>
 </body>
 </html>

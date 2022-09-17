@@ -3,7 +3,16 @@
 <h2>This is the form to enter how many weeks you are training for.</h2>
 <form id="num-weeks-form" method="POST">
     <p>How many weeks do you want to train for your marathon?</p>
-    <input type="number" name="num_weeks" placeholder="enter number of weeks">
+    {{form.hidden_tag()}}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {{field.label}}
+        {{field}}
+        {% for error in field.errors %}
+        {{error}}
+        {% endfor %}
+    </p>
+    {% endfor %}
     <button type="submit">Submit</button>
 </form>
 {% endblock%}

@@ -3,12 +3,13 @@
 <h2>This is the form to enter DAILY mileage goals.</h2>
 <form id="daily-miles-form" method="post">
     <!-- for week in weeks (from previous form, now in DB): make a week and a form for miles -->
-    <p>This is week {{ week }}. Enter your mileage goals for each day this week:</p>
+    <p>This is week {{ curr_week.num }}. Enter your mileage goals for each day this week:</p>
     <ul>    
         {% for day in one_week %}
-            <li>Day {{ day }}: <input type="number" name="{{ day }}" placeholder="enter number of miles"></li>
+            <li>Day {{ day }}: <input type="number" name="{{ day }}" placeholder="enter number of miles" value="{{ day.mileage_target }}"></li>
         {% endfor %}
     </ul>
     <button type="submit">Submit</button>
 </form>
+<a href="/my-training-plan">Back to Training Plan</a>
 {% endblock%}
