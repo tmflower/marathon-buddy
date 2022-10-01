@@ -1,16 +1,26 @@
 To do:
 
 Current issues:
--Working on daily miles form and displaying correctly in my training plan
--Adding to DB something is wrong. days.weeks is supposed to access weeks.id as foreign key, but it seems to have just added a new id...THIS IS PROBABLY BECAUSE YOU DID session['curr_week'] + 1 AND NEVER UNDID IT WHEN SWITCHING TO PLAN!
--From training plan to weekly-view, current week is correct but it reverts to week 1 when adding miles
--I believe these are all fixed
+-Set default values for default plan (finish this)
+
 
 Next issues:
--Change daily miles and update daily miles to WTForms
--Make sure update is not adding new Week/Day (need to access id for these, instead of num)
+-Make sure **update** is not adding new Week/Day (need to access id for these, instead of num)
+-Control of view based on auth (welcome screen, login/logout btns, ...?)
+-Add more options to navbar(for logged in users)
+-Improve UI of training plan!!!
+
+
+Resolved (I think) :
+-navbar styling
+-landing page button styling
+-Working on daily miles form and displaying correctly in my training plan
 -Add login link (temporary)
--Set default values for default plan
+-From training plan to weekly-view, current week is correct but it reverts to week 1 when adding miles
+-Adding to DB something is wrong. days.weeks is supposed to access weeks.id as foreign key, but it seems to have just added a new id...THIS IS PROBABLY BECAUSE YOU DID session['curr_week'] + 1 AND NEVER UNDID IT WHEN SWITCHING TO PLAN!
+-change password input type to "password" in wtforms so it isn't visible when typing
+-Welcome page styling
+-When logged in as new user, "This is week X" of daily-miles-form shows week 1 for every week and keeps adding new blank form (doesn't stop when reaches final week). However, DB seems to be accurate (for weeks only...nothing showing up for their days)
 
 Functionality:
 
@@ -20,11 +30,12 @@ Functionality:
 
         -Add ability of user to change details of plan (num weeks, miles any given week or day)
 
-        -Add default values for weekly miles (can do in WTFORMS?)
-
         -Add simple math checking (do your daily miles add up to weekly? Do your total miles add up to 26.2?)
 
-        -Add a default 16-week plan (use the one I'm using)...how does this work? Where do the defaults live? Maybe I use a seed file and somehow import that when they choose it?
+        -May want to use SelectField for numMiles, etc. ... however, these will automatically convert to strings, so will need to use coerce function to force them to be integers (i.e. coerce=int goes as 2nd argument...see the docs)
+
+        -Change 'daily miles' and 'update daily miles' to WTForms
+        ---- Proving to be very difficult! Leaving as is for now because it works...follow up later
 
 
 UI/UX:
@@ -39,14 +50,12 @@ UI/UX:
 
         -Add celebrations for milestones completed (badges, confetti, etc.)
 
+        -Bonus: integrate API calls for motivational quotes/images
+
 
 Attributions:
 
 photo on homepage:
-
-Photo by <a href="https://unsplash.com/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Miguel A Amutio</a> on <a href="https://unsplash.com/s/photos/marathon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-
-Photo by <a href="https://unsplash.com/@sporlab?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">sporlab</a> on <a href="https://unsplash.com/s/photos/marathon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 Photo by <a href="https://unsplash.com/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Miguel A Amutio</a> on <a href="https://unsplash.com/s/photos/marathon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   

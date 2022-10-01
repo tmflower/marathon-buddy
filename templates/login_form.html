@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Log in to your account</h2>
-<form id="login-form" method="POST">
-    {{form.hidden_tag()}}
-    {% for field in form if field.widget.input_type != 'hidden' %}
-    <p>
-        {{field.label}}
-        {{field}}
-        {% for error in field.errors %}
-        {{error}}
-        {% endfor %}
-    </p>
-    {% endfor %}
-    <button type="submit">Login</button>
-</form>
-<a href="/">Back to home</a>
+<div class="bg-color">
+<div class="container foreground">
+    <h2 class="mb-3">Log in to your account</h2>
+    <form id="login-form" method="POST">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+       
+        {% for field in form if field.widget.input_type != 'hidden' %}
+        <p>
+            {{field.label}}
+            {{field (class_="form-control", size=32)}}
+        
+            {% for error in field.errors %}
+            {{error}}
+            {% endfor %}
+        </p>
+        {% endfor %}    
+        <button type="submit" class="login btn rounded-pill btn-light">Login</button>
+    </div>
+</div>
+
+    </form>
+</div>
+
 
 {% endblock%}

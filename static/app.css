@@ -1,25 +1,152 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 
-body, html {
+/** For small mobile devices: */
+@media (min-width: 275px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .bg-image {
+        background-image: url("../static/miguel-a-amutio-QDv-uBc-poY-unsplash.jpg");
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat; 
+        background-size: cover;
+        height: 125%;
+        width: 125%;
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+    } 
+    
+    .bg-color {
+        background-image: linear-gradient(to bottom right, white, green);
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat; 
+        background-size: cover;
+        height: 125%;
+        width: 125%;
+    }
+
+    .foreground {
+        position: absolute;
+    }
+
+    .navbar {
+        font-family: 'Raleway', sans-serif;
+        z-index: 4;
+    }
+
+    .navbar-brand {
+        font-family: 'Righteous', cursive;
+        color: green !important;
+        text-shadow: -3px -3px 6px rgb(87, 165, 87) !important;
+    }
+
+    .title, .subtitle, .do-it {
+        font-family: 'Righteous', cursive;
+        font-size: 4rem;
+        margin-bottom: 4rem;
+        font-weight: bold;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .title {
+        color: green;
+        text-shadow: -2px -2px 6px white;
+    }
+
+    .subtitle {
+        color: white;
+        top: 64%;
+        font-size: 1.5rem;
+    }
+    
+    .completed {
+        color: red;
+    }
+    
+    .do-it {
+        top: 85%;
+        width: 30%;
+        font-size: 1rem;
+        color: rgb(9, 164, 1);
+        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .heading {
+        font-family: 'Righteous', cursive;
+        color: white;
+    }
+}
+
+/* For large mobile devices: */
+@media (min-width: 768px) {
+    .title {
+        font-size: 6rem;
+    }
+
+    .subtitle {
+        font-size: 3rem;
+    }
+
+    .do-it {
+        font-size: 2rem;
+        width: 20%;
+    }
+}
+
+/* For laptops and desktops: */
+@media (min-width: 992px) {
+    .title {
+        color: green;
+        font-size: 6rem;
+    }
+    .subtitle {
+        font-size: 3rem;
+    }
+    .do-it {
+        font-size: 2rem;
+        width: 15%;
+    }
+}
+
+/* body, html {
     height: 100%;
     margin: 0;
   }
 
 * {
     box-sizing: border-box;
-  }
+  } */
 
-.bg-image {
+/* .bg-image {
     background-image: url("../static/miguel-a-amutio-QDv-uBc-poY-unsplash.jpg");
     background-position: center center;
     background-attachment: fixed;
-    background-repeat: no-repeat; background-size: cover;
+    background-repeat: no-repeat; 
+    background-size: cover;
     height: 100%;
     filter: blur(4px);
     -webkit-filter: blur(4px);
-}
+} */
 
-.title, .subtitle, .btn {
+/* .title, .subtitle, .btn {
     font-family: 'Righteous', cursive;
     color: white;
     margin-bottom: 4rem;
@@ -32,9 +159,9 @@ body, html {
     width: 100%;
     padding: 20px;
     text-align: center;
-}
+} */
 
-.subtitle {
+/* .subtitle {
     top: 64%;
     font-size: 2.5rem;
 }
@@ -43,26 +170,14 @@ body, html {
     color: red;
 }
 
-.homepage .btn {
+.homepage .btn{
     top: 85%;
-    width: 20%;
+    width: 15%;
+    font-size: 3rem;
+    color: rgb(9, 164, 1);
     border: 1px solid white;
-}
-
-/* @media (min-width: 280px) {
-    .homepage {
-        background-size: cover;
-    }    
-}
-
-@media (min-width: 540px) {
-    .homepage {
-        background-size: 150%;
-    }    
-}
-
-@media (min-width: 1024px) {
-    .homepage {
-        background-size: 100vh;
-    }    
+    background-color: rgba(255, 255, 255, 0.25);
 } */
+
+
+

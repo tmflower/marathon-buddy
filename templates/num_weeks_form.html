@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>This is the form to enter how many weeks you are training for.</h2>
-<form id="num-weeks-form" method="POST">
-    <p>How many weeks do you want to train for your marathon?</p>
-    {{form.hidden_tag()}}
-    {% for field in form if field.widget.input_type != 'hidden' %}
-    <p>
-        {{field.label}}
-        {{field}}
-        {% for error in field.errors %}
-        {{error}}
-        {% endfor %}
-    </p>
-    {% endfor %}
-    <button type="submit">Submit</button>
-</form>
+<div class="bg-color">
+    <div class="container p-3">
+        <h2 class="heading">Training Plan Duration</h2>
+        <form id="num-weeks-form" method="POST">
+            <p>How many weeks do you want to train for your marathon?</p>
+            {{form.hidden_tag()}}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+            <p>
+                {{field.label}}
+                {{field}}
+                {% for error in field.errors %}
+                {{error}}
+                {% endfor %}
+            </p>
+            {% endfor %}
+            <button type="submit" class="login btn rounded-pill btn-light">Submit</button>
+        </form>
+    </div>
+
+</div>
+
 {% endblock%}

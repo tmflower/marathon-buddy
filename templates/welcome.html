@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Welcome back, {{username}}</h2>
-    <h4>What would you like to do?</h4>
-    <a href="/num-weeks-form">Set up my training plan</a>
-    <a href="/my-training-plan">See my training plan</a>
+<div class="bg-color">
+    <div class="container p-3">
+        <h2 class="heading">Welcome back, {{username}}!</h2>
+        <h5>What would you like to do?</h5>
+        <a href="/num-weeks-form">Set up my training plan</a>
+        <a href="/my-training-plan">See my training plan</a>
+        <a href="/starter-plan">Use our starter plan</a>
+    </div>
+    
+
+</div>
+
 
 {% endblock%}

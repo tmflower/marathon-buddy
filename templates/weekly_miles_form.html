@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>My weekly mileage goals</h2>
-<form id="weekly-miles-form" method="post">
-    <p>Your training plan is {{ num_weeks }} weeks long. Now let's set up your weekly mileage targets:</p>
-    <ul>    
 
-            <li>Week {{ week }}:     {{form.hidden_tag()}}
-                {% for field in form if field.widget.input_type != 'hidden' %}
-                <p>
-                    {{field.label}}
-                    {{field}}
-                    {% for error in field.errors %}
-                    {{error}}
-                    {% endfor %}
-                </p>
-                {% endfor %}</li>
+<div class="bg-color">
+    <div class="container p-3">
+        <h2 class="heading">My weekly mileage goals</h2>
+        <form id="weekly-miles-form" method="post">
+            <p>Your training plan is {{ num_weeks }} weeks long. Now let's set up your weekly mileage targets:</p>
+            <ul>    
+                    <li>Week {{ week }}:     
+                        {{form.hidden_tag()}}
+                        {% for field in form if field.widget.input_type != 'hidden' %}
+                        <p>
+                            {{field.label}}
+                            {{field}}
+                            {% for error in field.errors %}
+                            {{error}}
+                            {% endfor %}
+                        </p>
+                        {% endfor %}</li>
+        
+            </ul>
+            <button type="submit" class="login btn rounded-pill btn-light">Submit</button>
+        </form>
+    </div>
+</div>
 
-    </ul>
-    <button type="submit">Submit</button>
-</form>
 {% endblock%}
