@@ -1,23 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Name: {{ user.username }}'s Marathon Training Plan</h2>
 
-<a href="/daily-miles-form">Add mileage goals for this week</a>
-<a href="/weekly-view/{{curr_week.num}}/edit">Edit mileage goals for this week</a>
+<div class="container-fluid my-bg">
+    <h2 class="heading">{{ user.username }}'s Marathon Training Plan</h2>
+    <a href="/daily-miles-form">Add mileage goals for this week</a>
+    <a href="/weekly-view/{{curr_week.num}}/edit">Edit mileage goals for this week</a>
+    
+    <p>Details for week #{{ curr_week.num }}</p>
+    
+    <!-- <ul>Mileage By Day:
+        {% for day in my_days %}
+            <li>Day {{ day.num }}:  Run {{ day.mileage_target}} miles</li>
+        {% endfor %}
+    </ul> -->
+    <div class="container-fluid">
+        <div class="row">
+            {% for day in my_days %}
+                <div class="col- card">
+                    <div class="card-header">
+                        Day {{ day.num }}
+                    </div>
+                    <div class="card-body">
+                        {{ day.mileage_target }} miles
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-<p>Details for week #{{ curr_week.num }}</p>
-
-<ul>Mileage By Day:
-    {% for day in my_days %}
-        <li>Day {{ day.num }}:  Run {{ day.mileage_target}} miles</li>
-    {% endfor %}
-</ul>
-
-<p>Total miles to run this week: {{ curr_week.mileage_target }}</p>
-<p>Miles completed this week: {{ curr_week.miles_completed }}</p>
-<p>Miles remaining this week: {{ curr_week.mileage_target - curr_week.miles_completed }}</p>
+    
+    <p>Total miles to run this week: {{ curr_week.mileage_target }}</p>
+    <p>Miles completed this week: {{ curr_week.miles_completed }}</p>
+    <p>Miles remaining this week: {{ curr_week.mileage_target - curr_week.miles_completed }}</p>
+    
+    
+    <a href="/my-training-plan">Back to Training Plan</a>
+</div>
 
 
-<a href="/my-training-plan">Back to Training Plan</a>
+
 
 {% endblock%}

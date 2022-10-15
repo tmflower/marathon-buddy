@@ -35,9 +35,13 @@
         width: 125%;
     }
 
-    .foreground {
-        position: absolute;
+    .my-bg {
+        background-color: rgba(44, 137, 44, 0.481);
     }
+
+    /* .foreground {
+        position: absolute;
+    } */
 
     .navbar {
         font-family: 'Raleway', sans-serif;
@@ -93,6 +97,18 @@
         font-family: 'Righteous', cursive;
         color: white;
     }
+
+    /* .week-card {
+        border: 1px solid red;
+    }
+
+    .week {
+        border: 1px solid black;
+    }
+
+    .day {
+        border: 1px solid blue; 
+    } */
 }
 
 /* For large mobile devices: */

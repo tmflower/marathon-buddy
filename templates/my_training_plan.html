@@ -1,36 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="bg-color">
+<div class="my-bg">
     <div class="container pt-4">
         <h2 class="heading">{{ user.username }}'s Marathon Training Plan</h2>
         <!-- <p>Total Miles Completed: {{ user.total_miles_completed }}</p>
         <p>Miles Remaining in My Plan: </p> -->
         <p>Total Weeks to Train: {{ user.num_weeks }}</p>
-        <h3>Select a week to add or edit daily mileage goals:</h3>
+        <h4>Select a week to add or edit daily mileage goals:</h4>
         
-        <h4>Mileage By Week:</h4>
+        <div >
                 {% for week in my_weeks %}
-                    <div class="row">                       
-                        <div class="card m-3 p-3">
-                            <p><a href="/weekly-view/{{week.num}}">Week:{{ week.num }}</a></p>
-                            <div class="week" id="week-{{week.num}}">
+                        <div class="card p-3 m-3 week-card">
+                            <p><a href="/weekly-view/{{week.num}}">Week {{ week.num }}</a></p>
+                            <div class="row week m-3" id="week-{{week.num}}">
 
                                 {% for day in my_days %}                                   
                                     {% if day.week == week.id %}
                                         <div class="col">
-                                            <div class="card">
-                                                <div class="day" id="{{ day.id }}"> Day: {{ day.num }} --- {{ day.mileage_target }} miles</div>
+                                            <div class="card day" id="{{ day.id }}">
+                                                <div class="card-header" >
+                                                    <p class="text-white" style="height: .15rem">Day {{ day.num }}</p>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p style="height: 1rem">{{ day.mileage_target }} miles</p>
+                                                </div>                                                
                                             </div>
                                         </div>
                                     {% endif %}                              
                                 {% endfor %}
-
-                            <p>Total miles this week: {{ week.mileage_target }}</p>
-                        </div>
-                    </div>
-
+                           
+                            </div>
+                            <div class="card">
+                                <p class="text-center">Total miles: {{ week.mileage_target }}</p>
+                            </div> 
+                        </div>                     
             {% endfor %}
+        </div>
         
         <!-- <ul>Mileage By Day:
             {% for day in my_days %}

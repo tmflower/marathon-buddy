@@ -1,14 +1,18 @@
 To do:
 
 Current issues:
--Set default values for default plan (finish this)
+-Make sure **update** is not adding new Week/Day (need to access id for these, instead of num)
+-Improve UI of training plan!!! (look at container spacing...too much L/R padding or margin?)
 
 
 Next issues:
--Make sure **update** is not adding new Week/Day (need to access id for these, instead of num)
+-weekly view shows 'miles completed' and 'miles remaining' but there's no script for calculating/updating this
+-edit miles route needs fixing; also need to add option to edit num_weeks???
 -Control of view based on auth (welcome screen, login/logout btns, ...?)
 -Add more options to navbar(for logged in users)
--Improve UI of training plan!!!
+-green background not reaching bottom of page
+-change input type back to integer (floats look messy & confusing; also unnecessary)
+-UI markup for completed miles (currently just changes text to red)
 
 
 Resolved (I think) :
@@ -21,6 +25,8 @@ Resolved (I think) :
 -change password input type to "password" in wtforms so it isn't visible when typing
 -Welcome page styling
 -When logged in as new user, "This is week X" of daily-miles-form shows week 1 for every week and keeps adding new blank form (doesn't stop when reaches final week). However, DB seems to be accurate (for weeks only...nothing showing up for their days)
+-Set default values for default plan (finish this)
+-when using starter plan, daily miles not showing in weekly view...curr-week variable not available...may just need to add code from setup plan to fix this
 
 Functionality:
 
