@@ -98,6 +98,19 @@
         color: white;
     }
 
+    .weeks {
+        margin: auto;
+        width: 80%;
+    }
+
+    .card .day {
+        width: 10em;
+    }
+
+    .rest-day {
+        color: gray;
+    }
+
     /* .week-card {
         border: 1px solid red;
     }

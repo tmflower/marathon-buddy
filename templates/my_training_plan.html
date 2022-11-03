@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="my-bg">
-    <div class="container pt-4">
+    <div class="pt-4 weeks">
         <h2 class="heading">{{ user.username }}'s Marathon Training Plan</h2>
         <!-- <p>Total Miles Completed: {{ user.total_miles_completed }}</p>
         <p>Miles Remaining in My Plan: </p> -->
@@ -20,10 +20,14 @@
                                         <div class="col">
                                             <div class="card day" id="{{ day.id }}">
                                                 <div class="card-header" >
-                                                    <p class="text-white" style="height: .15rem">Day {{ day.num }}</p>
+                                                    <p class="text-success" style="height: .15rem">Day {{ day.num }}</p>
                                                 </div>
                                                 <div class="card-body">
+                                                    {% if day.mileage_target == 0.0 %}
+                                                    <p style="height: 1rem" class="rest-day">🧘 REST DAY</p>
+                                                    {% else %}
                                                     <p style="height: 1rem">{{ day.mileage_target }} miles</p>
+                                                    {% endif %}
                                                 </div>                                                
                                             </div>
                                         </div>

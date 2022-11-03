@@ -1,18 +1,34 @@
 To do:
 
 Current issues:
+-THOUGHT: Are you spending too much time trying to provide options to edit, etc.? Should you just move forward with "create plan and use plan" functionality, knowing that you can build more on top of it...or build alternative using React???? What if this app looks like:
+        -You can build a custom plan from scratch
+        -You can use a prebuilt 16-week starter plan
+        -You can track your weekly miles
+        -You get recognition for meeting milestones along the way
+        -You can delete your plan when finished
+        And that's it for now! Later on, we can...
+        -Edit custom plan
+        -Edit starter plan
+        -Create and save multiple plans
+        -Align to calendar dates
+        -Get weekly prompts/reminders/kudos
+        -Share progress with others
+-Consider allowing edit by specific day only...generating weekly data in form to edit is proving challenging
 -Make sure **update** is not adding new Week/Day (need to access id for these, instead of num)
 -Improve UI of training plan!!! (look at container spacing...too much L/R padding or margin?)
 
 
 Next issues:
+-TODO: if a new user logs in and clicks "see my training plan," they need to be redirected to set up a plan
 -weekly view shows 'miles completed' and 'miles remaining' but there's no script for calculating/updating this
--edit miles route needs fixing; also need to add option to edit num_weeks???
--Control of view based on auth (welcome screen, login/logout btns, ...?)
+-edit miles route needs fixing; also need to add option to edit num_weeks??? (may need to force delete/create new plan)
+-Control of view based on auth (welcome screen, login/logout btns, ...?) including navbar links and 'Do it' button
 -Add more options to navbar(for logged in users)
--green background not reaching bottom of page
 -change input type back to integer (floats look messy & confusing; also unnecessary)
 -UI markup for completed miles (currently just changes text to red)
+-Provide option for user to clear plan and start over
+
 
 
 Resolved (I think) :

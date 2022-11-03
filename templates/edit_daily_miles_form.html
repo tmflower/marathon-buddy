@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>This is the form to EDIT DAILY mileage goals.</h2>
+<form id="daily-miles-form" method="post">
+    <p>This is week {{ curr_week.num }} and you will run {{ curr_week.mileage_target }} miles. Enter your mileage goals for each day this week:</p>
+    <ul>    
+        <li>Week {{ curr_week.num }}: 
+  
+            {{form.hidden_tag()}}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+
+            <p>
+                {{field.label}}
+                {{field}}
+                {% for error in field.errors %}
+                {{error}}
+                {% endfor %}
+            </p>
+ 
+            {% endfor %}</li>
+    </ul>
+
+    <!-- <ul>    
+        {% for day in one_week %}
+            <li>Day {{ day }}: <input type="number" name="{{ day }}" placeholder="enter number of miles" value="{{ day.mileage_target }}"></li>
+        {% endfor %}
+    </ul> -->
+    <button type="submit">Submit</button>
+</form>
+{% endblock%}

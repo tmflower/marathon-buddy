@@ -21,7 +21,11 @@
                         Day {{ day.num }}
                     </div>
                     <div class="card-body">
+                        {% if day.mileage_target == 0.0 %}
+                        <p style="height: 1rem" class="rest-day">🧘 REST DAY</p>
+                        {% else %}
                         {{ day.mileage_target }} miles
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

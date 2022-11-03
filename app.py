@@ -168,6 +168,8 @@ def show_daily_mileage_form():
     user_id = session['user_id']
     user = User.query.get(user_id)
     curr_week = Week.query.filter(Week.user == user.id, Week.num == session['week_details']).first()
+    print("**********************************************")
+    print(session['week_details'])
 
     """ create list of days to iterate through in template """
     one_week = list(range(1,8))
@@ -182,6 +184,7 @@ def show_daily_mileage_form():
         return redirect('/my-training-plan')
 
     return render_template('daily_miles_form.html', one_week=one_week, curr_week=curr_week)
+
 ######################################################################################
 ## attempt to accomplish same result with WTForms, but only returns first value for all fields:
 ######################################################################################
@@ -210,13 +213,14 @@ def show_plan():
     """ get the current user and current week data from session"""
     user_id = session['user_id']
     user = User.query.get(user_id)
-    curr_week = Week.query.get(session['week_id'])
+    # curr_week = Week.query.get(session['week_id'])
 
     """ get all the data in this user's plan and display in UI"""
     my_weeks = Week.query.filter(Week.user == user.id).all()
     my_days = Day.query.filter(Day.user == user.id).all()
 
-    return render_template('my_training_plan.html', user=user, curr_week=curr_week.num, my_weeks=my_weeks, my_days=my_days)
+    # return render_template('my_training_plan.html', user=user, curr_week=curr_week.num, my_weeks=my_weeks, my_days=my_days)
+    return render_template('my_training_plan.html', user=user, my_weeks=my_weeks, my_days=my_days)
 
 @app.route('/weekly-view/<int:week>')
 def show_week(week):
@@ -240,19 +244,33 @@ def edit_week(week):
     user_id = session['user_id']
     user = User.query.get(user_id)
     # week = Week.query.get(session['week'])
-    curr_week = Week.query.filter(Week.num == week).first()
-    my_days = Day.query.filter(Day.week == curr_week.num, Day.user == user.id).all()
+    curr_week = Week.query.filter(Week.num == week, Week.user == user.id).first()
+    my_days = Day.query.filter(Day.week == curr_week.id, Day.user == user.id).all()
 
     ########################################################
     ## this needs to be a WTForm
     ########################################################
 
-    one_week = list(range(1,8))
-    if request.method == "POST":
-        daily_miles = request.form.to_dict()
-        for (day, daily_miles) in daily_miles.items():
-            day = Day(num=day, mileage_target=daily_miles, week=week, user=user.id)
-            db.session.commit()
-        return redirect('/my-training-plan')
+    
+    for day in my_days:
+        print(day.mileage_target)
+        form = DailyMilesForm(prefix=day.id)
+        form.daily_miles.data = day.mileage_target
 
-    return render_template('daily_miles_form.html', one_week=one_week, week=week)
+    # form = DailyMilesForm()
+    # form.daily_miles.data = my_days[1].mileage_target
+
+    # form = DailyMilesForm()
+    # form.daily_miles.data = my_days[2].mileage_target
+
+
+## Code below works if form fails:
+    # one_week = list(range(1,8))
+    # if request.method == "POST":
+    #     daily_miles = request.form.to_dict()
+    #     for (day, daily_miles) in daily_miles.items():
+    #         day = Day(num=day, mileage_target=daily_miles, week=week, user=user.id)
+    #         db.session.commit()
+    #     return redirect('/my-training-plan')
+
+    return render_template('edit_daily_miles_form.html', form=form, week=week, curr_week=curr_week)
